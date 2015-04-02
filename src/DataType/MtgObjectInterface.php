@@ -52,6 +52,21 @@ interface MtgObjectInterface extends FactoryInterface, MultipleFormInterface, Pu
     public function getType();
 
     /**
+     * Gets the title.
+     *
+     * @return string
+     */
+    public function getTitle();
+
+    /**
+     * Gets the language code.
+     *
+     * @return string
+     *   An ISO 639-1 alpha-2 language code.
+     */
+    public function getLanguageCode();
+
+    /**
      * Gets the location.
      *
      * @return \Triquanta\IziTravel\DataType\LocationInterface|null

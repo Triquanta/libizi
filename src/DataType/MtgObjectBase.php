@@ -155,6 +155,10 @@ abstract class MtgObjectBase implements MtgObjectInterface
         ];
     }
 
+    abstract public function getTitle();
+
+    abstract public function getLanguageCode();
+
     public function getCity()
     {
         return $this->city;

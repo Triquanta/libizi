@@ -58,6 +58,16 @@ abstract class FullMtgObjectBase extends MtgObjectBase implements FullMtgObjectI
         return $this->parentUuid;
     }
 
+    public function getTitle()
+    {
+      return $this->getContent()[0]->getTitle();
+    }
+
+    public function getLanguageCode()
+    {
+      return $this->getContent()[0]->getLanguageCode();
+    }
+
     public function getMap()
     {
         return $this->map;

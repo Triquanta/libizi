@@ -41,8 +41,6 @@ Trait ModifiableTrait
     /**
      * @param array $sections
      *
-     * @todo Implement this to improve performance by reducing the amount of data.
-     *
      * @throws \BadMethodCallException
      *   Is always thrown.
      */

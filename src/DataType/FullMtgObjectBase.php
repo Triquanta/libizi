@@ -60,12 +60,12 @@ abstract class FullMtgObjectBase extends MtgObjectBase implements FullMtgObjectI
 
     public function getTitle()
     {
-      return $this->getContent()[0]->getTitle();
+      return !empty($this->getContent()[0]) ? $this->getContent()[0]->getTitle() : '';
     }
 
     public function getLanguageCode()
     {
-      return $this->getContent()[0]->getLanguageCode();
+      return !empty($this->getContent()[0]) ? $this->getContent()[0]->getLanguageCode() : '';
     }
 
     public function getMap()

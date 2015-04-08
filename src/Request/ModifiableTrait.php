@@ -25,13 +25,13 @@ Trait ModifiableTrait
    *
    * @return \Triquanta\IziTravel\Request\ModifiableInterface
    *
-   * @throws \BadMethodCallException
+   * @throws \InvalidArgumentException
    *   When unsupported sections are used.
    */
     public function setIncludes(array $sections)
     {
         if (in_array('none', $sections)) {
-            throw new \BadMethodCallException('Only specific sections can be including. Including "none" is not supported.');
+            throw new \InvalidArgumentException('Only specific sections can be including. Including "none" is not supported.');
         }
         $this->includes = $sections;
 
@@ -41,12 +41,12 @@ Trait ModifiableTrait
     /**
      * @param array $sections
      *
-     * @throws \BadMethodCallException
+     * @throws \InvalidArgumentException
      *   Is always thrown.
      */
     public function setExcludes(array $sections)
     {
-        throw new \BadMethodCallException('Excludes are not yet supported, because the service "Bart" depends on the services "coffee" and "API documentation" and these dependencies have not been satisfied yet.');
+        throw new \InvalidArgumentException('Excludes are not yet supported, because the service "Bart" depends on the services "coffee" and "API documentation" and these dependencies have not been satisfied yet.');
     }
 
 }

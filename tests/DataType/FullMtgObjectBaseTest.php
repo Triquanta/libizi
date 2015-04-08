@@ -60,6 +60,22 @@ class FullMtgObjectBaseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::getLanguageCode
+     */
+    public function testGetLanguageCode()
+    {
+      $this->assertSame('en', $this->sut->getLanguageCode());
+    }
+
+    /**
+     * @covers ::getTitle
+     */
+    public function testGetTitle()
+    {
+      $this->assertSame("Bergen in Edvard Grieg's footsteps", $this->sut->getTitle());
+    }
+
+    /**
      * @covers ::getParentUuid
      */
     public function testGetParentUuid()

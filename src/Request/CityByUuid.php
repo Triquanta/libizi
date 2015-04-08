@@ -25,19 +25,14 @@ class CityByUuid extends RequestBase implements FormInterface, ModifiableInterfa
      */
     public function execute()
     {
-      if (!isset($this->uuid))
-      {
-        throw new \Exception('Requesting a city by UUID requires a UUID.');
-      }
+        $json = $this->requestHandler->request('/cities/' . $this->uuid, [
+          'languages' => $this->languageCodes,
+          'includes' => $this->includes,
+          'form' => $this->form,
+        ]);
+        $data = json_decode($json);
 
-      $json = $this->requestHandler->request('/cities/' . $this->uuid, [
-        'languages' => $this->languageCodes,
-        'includes' => $this->includes,
-        'form' => $this->form,
-      ]);
-      $data = json_decode($json);
-
-      return CityBase::createFromData($data, $this->form);
+        return CityBase::createFromData($data, $this->form);
     }
 
 }

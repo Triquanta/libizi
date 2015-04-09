@@ -37,4 +37,12 @@ abstract class RequestBase implements RequestInterface
         return new static($requestHandler);
     }
 
+    /**
+     * Validates arguments before the request takes place.
+     *
+     * @throws \InvalidArgumentException
+     *   Exception thrown when arguments are missing or have an invalid value.
+     */
+    protected function validateArguments() {}
+
 }

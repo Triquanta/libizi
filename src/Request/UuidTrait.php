@@ -23,7 +23,7 @@ Trait UuidTrait
     public function setUuid($uuid)
     {
         if (empty($uuid)) {
-            throw new \InvalidArgumentException('UUID is required.');
+            throw new \InvalidArgumentException('No UUID provided. Expected uuid string.');
         }
 
         $this->uuid = $uuid;
@@ -34,7 +34,7 @@ Trait UuidTrait
     protected function validateRequiredUuid()
     {
         if (empty($this->uuid)) {
-            throw new \RuntimeException('UUID is required.');
+            throw new \RuntimeException('No UUID provided. Expected uuid string.');
         }
     }
 

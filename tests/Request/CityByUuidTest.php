@@ -106,6 +106,25 @@ class CityByUuidTest extends RequestBaseTestBase
     }
 
     /**
+     * @covers ::execute
+     *
+     * @dataProvider providerTestExecuteInvalidRequest
+     *
+     * @expectedException \InvalidArgumentException
+     *
+     * @depends      testExecute
+     */
+    public function testExecuteInvalidRequest($uuid, $language_codes)
+    {
+        $this->sut = CityByUuid::create($this->requestHandler);
+
+        $this->sut
+          ->setUuid($uuid)
+          ->setLanguageCodes($language_codes)
+          ->execute();
+    }
+
+    /**
      * Provides data to self::testExecute
      */
     public function providerTestExecute()
@@ -118,6 +137,23 @@ class CityByUuidTest extends RequestBaseTestBase
           [
             MultipleFormInterface::FORM_COMPACT,
             '\Triquanta\IziTravel\DataType\CompactCityInterface'
+          ],
+        ];
+    }
+
+    /**
+     * Provides data to self::testExecuteInvalidRequest
+     */
+    public function providerTestExecuteInvalidRequest()
+    {
+        return [
+          [
+            '3f879f37-21b0-479d-bd74-aa26f72fa328',
+            []
+          ],
+          [
+            '',
+            ['en', 'nl']
           ],
         ];
     }

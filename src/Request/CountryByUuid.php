@@ -25,6 +25,8 @@ class CountryByUuid extends RequestBase implements FormInterface, ModifiableInte
      */
     public function execute()
     {
+        $this->validateArguments();
+
         $json = $this->requestHandler->request('/countries/' . $this->uuid, [
           'languages' => $this->languageCodes,
           'includes' => $this->includes,
@@ -33,5 +35,14 @@ class CountryByUuid extends RequestBase implements FormInterface, ModifiableInte
 
         return CountryBase::createFromJson($json, $this->form);
     }
+
+   /**
+    * {@inheritdoc}
+    */
+   protected function validateArguments()
+   {
+       $this->validateUuid();
+       $this->validateLanguageCodes();
+   }
 
 }

@@ -27,4 +27,12 @@ Trait UuidTrait
         return $this;
     }
 
+    protected function validateUuid()
+    {
+        if (empty($this->uuid))
+        {
+          throw new \InvalidArgumentException('Missing uuid');
+        }
+    }
+
 }

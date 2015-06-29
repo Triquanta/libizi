@@ -28,4 +28,12 @@ Trait MultilingualTrait
         return $this;
     }
 
+    protected function validateLanguageCodes()
+    {
+        if (empty($this->languageCodes))
+        {
+          throw new \InvalidArgumentException('Missing language code(s)');
+        }
+    }
+
 }

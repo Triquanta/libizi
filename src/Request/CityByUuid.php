@@ -25,6 +25,8 @@ class CityByUuid extends RequestBase implements FormInterface, ModifiableInterfa
      */
     public function execute()
     {
+        $this->validateArguments();
+
         $json = $this->requestHandler->request('/cities/' . $this->uuid, [
           'languages' => $this->languageCodes,
           'includes' => $this->includes,
@@ -32,6 +34,15 @@ class CityByUuid extends RequestBase implements FormInterface, ModifiableInterfa
         ]);
 
         return CityBase::createFromJson($json, $this->form);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function validateArguments()
+    {
+        $this->validateUuid();
+        $this->validateLanguageCodes();
     }
 
 }

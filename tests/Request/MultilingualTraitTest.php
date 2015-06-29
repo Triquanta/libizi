@@ -25,7 +25,7 @@ class MultilingualTraitTest extends \PHPUnit_Framework_TestCase {
     /**
      * An invalid language codes.
      *
-     * @var string
+     * @var string[]|null
      */
     protected $invalidLanguageCodes;
 

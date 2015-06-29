@@ -66,8 +66,6 @@ class MultilingualTraitTest extends \PHPUnit_Framework_TestCase {
     public function testSetInvalidLanguageCodes() {
 
         $this->sut->setLanguageCodes($this->invalidLanguageCodes);
-
-        $this->fail('Invalid language codes must throw an exception.');
     }
 
     /**
@@ -87,8 +85,6 @@ class MultilingualTraitTest extends \PHPUnit_Framework_TestCase {
         $reflection_method = $reflection->getMethod('validateRequiredLanguageCodes');
         $reflection_method->setAccessible(true);
         $reflection_method->invoke($this->sut);
-
-        $this->fail('Invalid language codes must throw an exception.');
     }
 
 }

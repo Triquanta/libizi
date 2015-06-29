@@ -122,8 +122,6 @@ class CityByUuidTest extends RequestBaseTestBase
           ->setUuid($uuid)
           ->setLanguageCodes($language_codes)
           ->execute();
-
-        $this->fail('Invalid arguments must throw an exception.');
     }
 
     /**

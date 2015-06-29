@@ -39,6 +39,3 @@ Trait UuidTrait
     }
 
 }
-
-// 4 test methods
-// validatie-test @depends op setUuid

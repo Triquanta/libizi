@@ -106,6 +106,50 @@ class CityByUuidTest extends RequestBaseTestBase
     }
 
     /**
+     * @covers ::execute
+     *
+     * @expectedException \InvalidArgumentException
+     *
+     * @depends      testExecute
+     */
+    public function testExecuteInvalidUuidRequest()
+    {
+        $this->sut = CityByUuid::create($this->productionRequestHandler);
+
+        $uuid = '';
+        $languageCodes = ['en'];
+
+        $this->sut
+          ->setUuid($uuid)
+          ->setLanguageCodes($languageCodes)
+          ->execute();
+
+        // No assertion. Exception is thrown.
+    }
+
+    /**
+     * @covers ::execute
+     *
+     * @expectedException \InvalidArgumentException
+     *
+     * @depends      testExecute
+     */
+    public function testExecuteInvalidLangcodeRequest()
+    {
+        $this->sut = CityByUuid::create($this->productionRequestHandler);
+
+        $uuid = '3f879f37-21b0-479d-bd74-aa26f72fa328';
+        $languageCodes = [];
+
+        $this->sut
+          ->setUuid($uuid)
+          ->setLanguageCodes($languageCodes)
+          ->execute();
+
+        // No assertion. Exception is thrown.
+    }
+
+    /**
      * Provides data to self::testExecute
      */
     public function providerTestExecute()

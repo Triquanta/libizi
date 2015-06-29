@@ -23,6 +23,10 @@ Trait MultilingualTrait
 
     public function setLanguageCodes(array $languageCodes)
     {
+        if (empty($languageCodes)) {
+            throw new \InvalidArgumentException('Language code(s) are required.');
+        }
+
         $this->languageCodes = $languageCodes;
 
         return $this;
@@ -31,7 +35,7 @@ Trait MultilingualTrait
     public function validateRequiredLanguageCodes()
     {
         if (empty($this->languageCodes)) {
-            throw new \RuntimeException('Language codes are required.');
+            throw new \RuntimeException('Language code(s) are required.');
         }
     }
 

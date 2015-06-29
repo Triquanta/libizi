@@ -116,7 +116,7 @@ class CityByUuidTest extends RequestBaseTestBase
      */
     public function testExecuteInvalidRequest($uuid, $language_codes)
     {
-        $this->sut = CityByUuid::create($this->productionRequestHandler);
+        $this->sut = CityByUuid::create($this->requestHandler);
 
         $this->sut
           ->setUuid($uuid)

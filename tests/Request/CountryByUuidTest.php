@@ -116,7 +116,7 @@ class CountryByUuidTest extends RequestBaseTestBase
      */
     public function testExecuteInvalidRequest($uuid, $language_codes)
     {
-        $this->sut = CountryByUuid::create($this->productionRequestHandler);
+        $this->sut = CountryByUuid::create($this->requestHandler);
 
         $this->sut
           ->setUuid($uuid)

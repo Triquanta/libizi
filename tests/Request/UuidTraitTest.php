@@ -66,23 +66,7 @@ class UuidTraitTest extends \PHPUnit_Framework_TestCase {
 
         $this->sut->setUuid($this->invalidUuid);
 
-    }
-
-    /**
-     * @covers ::validateRequiredUuid
-     *
-     * @depends testSetUuid
-     */
-    public function testValidateUuid() {
-
-        $this->sut->setUuid($this->uuid);
-
-        $reflection_method = new \ReflectionMethod($this->sut, 'validateRequiredUuid');
-        $reflection_method->setAccessible(true);
-        $reflection_method->invoke($this->sut);
-
-        // No assertion. Only testing if no exception occurs.
-
+        $this->fail('Invalid UUID must throw an exception.');
     }
 
     /**
@@ -103,6 +87,7 @@ class UuidTraitTest extends \PHPUnit_Framework_TestCase {
         $reflection_method->setAccessible(true);
         $reflection_method->invoke($this->sut);
 
+        $this->fail('Invalid UUID must throw an exception.');
     }
 
 }

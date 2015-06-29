@@ -108,45 +108,22 @@ class CountryByUuidTest extends RequestBaseTestBase
     /**
      * @covers ::execute
      *
-     * @expectedException \InvalidArgumentException
-     *
-     * @depends      testExecute
-     */
-    public function testExecuteInvalidUuidRequest()
-    {
-        $this->sut = CountryByUuid::create($this->productionRequestHandler);
-
-        $uuid = '';
-        $languageCodes = ['en'];
-
-        $this->sut
-          ->setUuid($uuid)
-          ->setLanguageCodes($languageCodes)
-          ->execute();
-
-        // No assertion. Exception is thrown.
-    }
-
-    /**
-     * @covers ::execute
+     * @dataProvider providerTestExecuteInvalidRequest
      *
      * @expectedException \InvalidArgumentException
      *
      * @depends      testExecute
      */
-    public function testExecuteInvalidLangcodeRequest()
+    public function testExecuteInvalidRequest($uuid, $language_codes)
     {
         $this->sut = CountryByUuid::create($this->productionRequestHandler);
 
-        $uuid = '69929d8f-ba82-49b2-88fe-e5a0c687caca';
-        $languageCodes = [];
-
         $this->sut
           ->setUuid($uuid)
-          ->setLanguageCodes($languageCodes)
+          ->setLanguageCodes($language_codes)
           ->execute();
 
-        // No assertion. Exception is thrown.
+        $this->fail('Invalid arguments must throw an exception.');
     }
 
     /**
@@ -162,6 +139,23 @@ class CountryByUuidTest extends RequestBaseTestBase
           [
             MultipleFormInterface::FORM_COMPACT,
             '\Triquanta\IziTravel\DataType\CompactCountryInterface'
+          ],
+        ];
+    }
+
+    /**
+     * Provides data to self::testExecuteInvalidRequest
+     */
+    public function providerTestExecuteInvalidRequest()
+    {
+        return [
+          [
+            '3f879f37-21b0-479d-bd74-aa26f72fa328',
+            []
+          ],
+          [
+            '',
+            ['en', 'nl']
           ],
         ];
     }

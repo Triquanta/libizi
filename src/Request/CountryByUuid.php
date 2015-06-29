@@ -25,6 +25,9 @@ class CountryByUuid extends RequestBase implements FormInterface, ModifiableInte
      */
     public function execute()
     {
+        $this->validateRequiredUuid();
+        $this->validateRequiredLanguageCodes();
+
         $json = $this->requestHandler->request('/countries/' . $this->uuid, [
           'languages' => $this->languageCodes,
           'includes' => $this->includes,

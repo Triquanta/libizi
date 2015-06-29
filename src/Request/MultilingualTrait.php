@@ -28,4 +28,11 @@ Trait MultilingualTrait
         return $this;
     }
 
+    public function validateRequiredLanguageCodes()
+    {
+        if (empty($this->languageCodes)) {
+            throw new \RuntimeException('Language codes are required.');
+        }
+    }
+
 }

@@ -60,7 +60,7 @@ class Rating implements RatingInterface
         $rating->uuid = $data->metadata->uuid;
         $rating->ratingAverage = $data->metadata->rating_average;
         $rating->ratingsCount = $data->metadata->ratings_count;
-        $rating->reviewsCount = $data->metadata->reviews_count;
+        $rating->reviewsCount = $data->paging->total_count;
         $rating->date = $data->metadata->date;
 
         $rating->reviews = [];
